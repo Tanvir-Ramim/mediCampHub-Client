@@ -1,19 +1,22 @@
 import { NavLink } from "react-router-dom";
 import logo from '../assets/logo/mchLogo.jpg'
 import  './Navbar.css'
+import MainDiv from "../shared/MainDiv/MainDiv";
+import AuthButton from "./Banner/AuthButton";
 const Navbar = () => {
   const navLinks = <>
     <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : "p-1 text-lg  font-semibold"} to='/'>Home</NavLink>
     <p className=" border-l-2 border-[#B354A6] "/>
-    <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/a'>Available Camps</NavLink>
+    <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/availableCamps'>Available Camps</NavLink>
     <p className=" border-l-2 border-[#B354A6] "/>
-    <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/a'>Dashboard</NavLink>
+    <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/dashboard'>Dashboard</NavLink>
     <p className=" border-l-2 border-[#B354A6] "/>
-    <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/a'>Contact Us</NavLink>
+    <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/contactUs'>Contact Us</NavLink>
   </>
   return (
-    <div>
-      <div className="navbar color-dimu shadow-md">
+       <MainDiv>
+        <div>
+      <div className="navbar color shadow-md">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -32,10 +35,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {/* <a className="btn">Button</a> */}
+          <AuthButton></AuthButton>
         </div>
       </div>
     </div>
+       </MainDiv>
   );
 };
 

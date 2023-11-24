@@ -7,6 +7,8 @@ import Home from "../pages/home/Home";
 import AvailableCamps from "../pages/availableCamps/AvailableCamps";
 import Dashboard from "../pages/dashboard/Dashboard";
 import ContactUs from "../pages/contactUs/ContactUs";
+import Login from "../pages/login/login";
+import Registration from "../pages/registration/Registration";
 
   const Router = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ import ContactUs from "../pages/contactUs/ContactUs";
         {
           path: 'contactUs',
           element:<ContactUs></ContactUs>
+        },
+        {
+          path: '/login',
+          element: <Login></Login>
+        },
+        {
+          path: '/registration',
+          element: <Registration></Registration>
         }
       ]
     },

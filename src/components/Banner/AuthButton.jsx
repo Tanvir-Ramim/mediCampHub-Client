@@ -21,7 +21,7 @@ const AuthButton = () => {
                 //  </button>
                 // </div> 
                 // :
-                <Link to='/logIn'><button className=" px-8 md:py-4 py-3"> Create An Account</button></Link>
+                <Link to='/login'><button className=" px-8 md:py-4 py-3"> Create An Account</button></Link>
              }
         </div>
     );

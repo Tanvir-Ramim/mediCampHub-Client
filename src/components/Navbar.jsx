@@ -9,7 +9,7 @@ const Navbar = () => {
     <p className=" border-l-2 border-[#B354A6] "/>
     <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/availableCamps'>Available Camps</NavLink>
     <p className=" border-l-2 border-[#B354A6] "/>
-    <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/dashboard'>Dashboard</NavLink>
+    <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/dashboard/organizer-profile'>Dashboard</NavLink>
     <p className=" border-l-2 border-[#B354A6] "/>
     <NavLink className={({ isActive }) => isActive ? "text-[#B354A6] text-lg p-1 font-semibold" : " p-1 text-lg  font-semibold"} to='/contactUs'>Contact Us</NavLink>
   </>

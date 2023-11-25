@@ -19,7 +19,6 @@ const useRole = () => {
             return
          }
          const role= userRole?.data?.role
-        //  console.log(role)
     return role
 };
 

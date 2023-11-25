@@ -50,7 +50,7 @@ import ManageRegisterCamps from "../pages/dashboard/ManageRegisteredCamps/Manage
              path:'add-a-camp',
              element: <AddACamp></AddACamp>
           },
-          {
+          {  
              path:'organizer-profile',
              element: <OrganizerProfile></OrganizerProfile>
           },

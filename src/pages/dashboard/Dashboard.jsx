@@ -7,7 +7,6 @@ import OrganizerNav from "../../components/OrganizerNavLink/OrganizerNav";
 
 const Dashboard = () => {
     const role=useRole()
-    console.log(role)
     return (
         <MainDiv>
             <div className="flex md:flex-row flex-col">

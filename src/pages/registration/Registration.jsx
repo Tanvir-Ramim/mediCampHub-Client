@@ -33,7 +33,7 @@ const Registration = () => {
                updateProfile(result.user,{
                   displayName: name,
                })
-               .then((result)=>{
+               .then(()=>{
                 
                    setUser({...user,displayName:name})
                    const userInfo={

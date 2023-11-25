@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../Authentication/AuthProvider";
+import useAxiosNormal from "../../hooks/useAxiosNormal";
 
 const Login = () => {
     const{userLogIn,googleLogIn}=useContext(AuthContext)
+    const axiosNormal=useAxiosNormal()
   const [error, setError] = useState(null)
   const navigate=useNavigate()
   const location=useLocation()
@@ -24,13 +26,19 @@ const Login = () => {
            setError(error.message)
        })
   }
-    const handleGoogleLogIn=()=>{
-        googleLogIn()
-        .then(()=>{
-        //   toast.success('Successfully Login')
-          navigate(location?.state? location.state:'/')
-        })
-    }
+  const handleGoogleSignIn=()=>{
+    googleLogIn()
+    .then(result=>{
+         const  userInfo={
+           email: result.user?.email,
+           name: result.user?.displayName 
+         }
+         axiosNormal.post('/users',userInfo)
+         .then(()=>{
+             navigate('/')
+         })
+    })
+}
     return (
         <div>
         <div className="hero min-h-screen bg-base-200 mb-6">
@@ -62,7 +70,7 @@ const Login = () => {
                 <h1 className="text-center text-xl text-white font-bold">Or</h1>
               </form>
               <div className="flex  justify-center mb-4">
-                <button onClick={handleGoogleLogIn} className="border border-[#11192BA8] font-semibold shadow shadow-[#11192BA8] p-2">Google SignIn</button>
+                <button onClick={handleGoogleSignIn} className="border border-[#11192BA8] font-semibold shadow shadow-[#11192BA8] p-2">Google SignIn</button>
               </div>
             </div>
           </div>

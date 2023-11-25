@@ -4,15 +4,18 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Authentication/AuthProvider";
+import useAxiosNormal from "../../hooks/useAxiosNormal";
+import Swal from "sweetalert2";
 
 const Registration = () => {
     const{createUser,setUser,user}=useContext(AuthContext)
+      const axiosNormal=useAxiosNormal()
         const [error,setError]=useState(null)
         const navigate=useNavigate()
        const handleRegister=(e)=>{
         e.preventDefault()
         const name=e.target.name.value
-        const url=e.target.url.value
+        const role=e.target.role.value
         const email=e.target.email.value
         const password=e.target.password.value
         setError('')
@@ -28,11 +31,30 @@ const Registration = () => {
             //    toast.success('Successfully Register')
                updateProfile(result.user,{
                   displayName: name,
-                  photoURL: url
                })
                .then(result=>{
-                   setUser({...user,photoURL:url,displayName:name,email:email})
-               
+                   setUser({...user,displayName:name})
+                   const userInfo={
+                       name,
+                       email,
+                       role
+                   }
+                   console.log(userInfo)
+                   axiosNormal.post('/users',userInfo)
+                   .then(res=>{
+                     console.log(res.data)
+                     if(res.data.insertedId){
+                      e.target.reset();
+                      Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: 'User created successfully.',
+                          showConfirmButton: false,
+                          timer: 1500
+                      });
+                    }
+                   })
+                   
                })
                navigate('/')
           })
@@ -69,11 +91,27 @@ const Registration = () => {
       </label>
       <input name="email" type="email" placeholder="email" className="input input-bordered" required />
     </div>
-    <div className="form-control">
+    <div className="form-control ">
+      <div className="flex gap-2">
+      <div className="w-1/2">
       <label className="label">
         <span className="label-text text-white text-lg">Password</span>
       </label>
-      <input name="password" type="password" placeholder="password" className="input input-bordered" required />
+      <input name="password" type="password" placeholder="password" className="input w-full input-bordered" required />
+      </div>
+      <div className="w-1/2">
+      <label className="label">
+        <span className="label-text text-white text-lg">Select Role</span>
+      </label>
+      <select name="role" defaultValue='default' className="select select-bordered">
+    <option >Participant</option>
+    <option  value='Organizer'>Organizer</option>
+    <option >Healthcare Professional</option>
+    
+    
+  </select>
+      </div>
+      </div>
     </div>
     <div className="form-control mt-6">
       <button className="btn btn-neutral">Submit</button>

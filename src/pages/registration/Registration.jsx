@@ -28,11 +28,13 @@ const Registration = () => {
           
            createUser(email,password)
           .then((result)=>{
+             
             //    toast.success('Successfully Register')
                updateProfile(result.user,{
                   displayName: name,
                })
-               .then(result=>{
+               .then((result)=>{
+                
                    setUser({...user,displayName:name})
                    const userInfo={
                        name,

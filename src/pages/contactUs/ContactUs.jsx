@@ -2,8 +2,9 @@
 
 import { FaHome, FaPhoneAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-// import Map from '../Components/Map/Map';
+
 import Swal from "sweetalert2";
+import Map from '../../components/map/Map';
 
 
 const ContactUs = () => {
@@ -14,9 +15,9 @@ const ContactUs = () => {
     }
     return (
         <div>
-            <div className="bg-red-500 flex items-center justify-evenly ">
+            <div className="bg-[#B354A6] flex items-center justify-evenly ">
                 <h1 className="md:text-4xl text-3 p-5 font-semibold text-white ">Contact Us</h1>
-                <p><span className="text-white">Dreamy Celebration</span> {'>'} Contact Us</p>
+                <p><span className="text-white">Medi Camps Hub</span> {'>'} Contact Us</p>
             </div>
             <div className="max-w-[1500px] m-auto">
                 <div>
@@ -33,16 +34,16 @@ const ContactUs = () => {
                         </h2>
                         <h1 className='flex items-center gap-3'>
                             <MdEmail></MdEmail>
-                            <span className='font-bold'>Email</span>:  info@dreamycelebration.net
+                            <span className='font-bold'>Email</span>:  info@medicamphub.net
                         </h1>
                         <h1 className='flex items-center gap-3'>
                             <MdEmail></MdEmail>
-                            <span className='font-bold'>Wechat ID</span>::DreamyCelebrationBD
+                            <span className='font-bold'>Wechat ID</span>::MediCampHub
                         </h1>
                     </div>
                     {/* this is form */}
                     <div className='grow'>
-                        <h1 className='text-2xl font-semibold mb-5 text-center lg:text-left'><span className='text-red-500'>Get</span> In Touch With us</h1>
+                        <h1 className='text-2xl font-semibold mb-5 text-center lg:text-left'><span className='text-[#B354A6]'>Get</span> In Touch With us</h1>
                         <form onSubmit={handleSubmit} className='text-center '>
                             <div className='lg:flex gap-5 lg:gap-12'>
                                 <input className='border py-3 px-10 ' placeholder='name' name='text' type="text" />
@@ -54,13 +55,13 @@ const ContactUs = () => {
                             </div>
 
                             <textarea className='border mt-5 lg:w-full w-2/3' name="message" id="" placeholder='message' cols="73" rows="7"></textarea>
-                  <input className='bg-red-500 block md:ml-[350px] lg:ml-0 cursor-pointer ml-44
+                  <input className='bg-[#B354A6] block md:ml-[350px] lg:ml-0 cursor-pointer ml-44
                     text-white p-1 mb-5 rounded-md ' type="submit" value="Submit" />
                         </form>
                     </div>
                 </div>
                <div className='mb-5'>
-               {/* <Map></Map> */}
+               <Map></Map>
                </div>
             </div>
         </div>

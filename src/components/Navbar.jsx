@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import logo from '../assets/logo/mchLogo.jpg'
 import  './Navbar.css'
 import MainDiv from "../shared/MainDiv/MainDiv";
 import AuthButton from "./Banner/AuthButton";
@@ -27,7 +26,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn gap-0 btn-ghost font-medium  text-xl ">MediCam<span className="text-[#B354A6]">Hub</span></a>
-          {/* <img className="w-20" src={logo} alt="" /> */}
+     
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-3">
@@ -35,7 +34,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {/* <a className="btn">Button</a> */}
+  
           <AuthButton></AuthButton>
         </div>
       </div>

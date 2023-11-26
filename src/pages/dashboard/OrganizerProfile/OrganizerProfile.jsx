@@ -11,7 +11,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const OrganizerProfile = () => {
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit } = useForm();
     const { user,setUser } = useAuth()
     const axiosNormal=useAxiosNormal()
     const role = useRole()

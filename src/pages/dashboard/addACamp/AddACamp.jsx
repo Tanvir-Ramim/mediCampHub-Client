@@ -1,9 +1,125 @@
+import { useForm } from "react-hook-form";
+import useAxiosNormal from "../../../hooks/useAxiosNormal";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddACamp = () => {
+
+    const { register, handleSubmit, reset } = useForm()
+    const axiosNormal = useAxiosNormal()
+
+    const onSubmit = async (data) => {
+        // const imageFile = { image: data.image[0] }
+        // const res = await axiosNormal.post(image_hosting_api, imageFile, {
+        //     headers: {
+        //         'content-type': 'multipart/form-data'
+        //     }
+        // })
+        // if (res.data.success) {
+        //     console.log('ai ra')
+
+        // }
+        console.log(data)
+    }
+
     return (
         <div>
-            This is Add a camp section
+            <h1 className="text-center text-[#B354A6] text-5xl mt-5">Add A Camp</h1>
+            <div className="flex min-h-[70vh] px-6 items-center justify-center ">
+            <div className="w-full">
+                <form onSubmit={handleSubmit(onSubmit)}>
+
+                    <div className="md:flex  gap-4 ">
+                        <div className="form-control md:w-2/5 my-6">
+                            <label className="label">
+                                <span className="label-text">Camp Name*</span>
+
+                            </label>
+                            <input type="text" placeholder="Camp Name" {...register('name' ,{required:true})} className="input input-bordered w-full " required/>
+                        </div>
+
+                        <div className="form-control md:w-2/5 my-6">
+                            <label className="label">
+                                <span className="label-text">Venue
+                                    Location*</span>
+                            </label>
+                            <input type="text" placeholder="Location" {...register('location',{required:true})} className="input input-bordered w-full " required/>
+                        </div>
+
+                        <div>
+                            <div className="form-control w-full my-6">
+                                <label className="label">
+                                    <span className="label-text">Specialized Services</span>
+                                </label>
+                                <input type="text" placeholder="Services" {...register('services',{required:true})} className="input input-bordered w-full "required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="md:flex gap-4">
+                        <div className="form-control w-full my-6">
+                            <label className="label">
+                                <span className="label-text">Category*</span>
+                            </label>
+                            <select defaultValue='default' {...register("category", { required: true })} className="select select-bordered w-full ">
+                                <option disabled value='default'>Select A Category</option>
+                                <option value="salad">Salad</option>
+                                <option value="pizza">Pizza</option>
+                                <option value="soup">Soup</option>
+                                <option value="dessert">Dessert</option>
+                                <option value="drinks">Drinks</option>
+                            </select>
+                        </div>
+                        <div className="form-control w-full my-6">
+                            <label className="label">
+                                <span className="label-text">Camp Fees</span>
+
+                            </label>
+                            <input type="number" placeholder="Camp Fees" {...register('fees', { required: true })} className="input input-bordered w-full " required/>
+                        </div>
+                        <div className="form-control w-full my-6">
+                            <label className="label">
+                                <span className="label-text">Target Audience</span>
+                            </label>
+                            <input type="text" placeholder="Target Audience" {...register('audience', { required: true })} className="input input-bordered w-full " required />
+                        </div>
+                    </div>
+
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Recipe Details</span>
+                        </label>
+                        <textarea {...register('details')} className="textarea textarea-bordered h-24" placeholder="Comprehensive Description" required></textarea>
+                    </div>
+
+                    <div className="md:flex mt-5">
+                        <div className="w-full mb-4 md:mb-0">
+                        <label className="label">
+                                    <span className="label-text">Select Picture</span>
+                                </label>
+                            <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" required/>
+                        </div>
+
+                        <div>
+                            <div className="form-control w-full ">
+                                <label className="label">
+                                    <span className="label-text">Scheduled Date and Time</span>
+                                </label>
+
+                                <input type="datetime-local" placeholder="Recipe Name" {...register('Scheduled', { required: true })} className="input input-bordered w-full " required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex mt-5 justify-center ">
+                    <button className="btn text-white bg-[#B354A6]">
+                        Add Camp 
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
         </div>
     );
 };

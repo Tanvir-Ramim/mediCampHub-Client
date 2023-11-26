@@ -1,26 +1,70 @@
 import { useForm } from "react-hook-form";
 import useAxiosNormal from "../../../hooks/useAxiosNormal";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddACamp = () => {
-
-    const { register, handleSubmit, reset } = useForm()
     const axiosNormal = useAxiosNormal()
-
+    const [hp,setHp]=useState([])
+    
+    useEffect(()=>{
+           axiosNormal.get('/hp')
+           .then(res=>{
+            setHp(res?.data)
+           
+           })
+    },[axiosNormal])
+    const { register, handleSubmit, reset  } = useForm()
+   
+  
     const onSubmit = async (data) => {
-        // const imageFile = { image: data.image[0] }
-        // const res = await axiosNormal.post(image_hosting_api, imageFile, {
-        //     headers: {
-        //         'content-type': 'multipart/form-data'
-        //     }
-        // })
-        // if (res.data.success) {
-        //     console.log('ai ra')
+        if(data.healthPro==="default")
+        {
+            toast.error('Please Select a Healthcare Professionals')
+            return 
+        }
+        console.log(data.healthPro)
+    
+        const imageFile = { image: data.image[0] }
+        const res = await axiosNormal.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+        if (res.data.success) {
+            const campsInfo={
+                name:data.name,
+                scheduled:data.Scheduled,
+                audience:data.audience,
+                details: data.details,
+                fees: data.fees,
+                healthPro:data.healthPro.split(", ")[1],
+                image: res.data.data.display_url,
+                location: data.location,
+                services: data.services
+            }
 
-        // }
-        console.log(data)
+            axiosNormal.post('/camps',campsInfo)
+            .then(res=>{
+                 if(res.data.insertedId){
+                    console.log(res.data)
+                    reset()
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: "Your work has been saved",
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                 }
+            })  
+        }
+
+        
     }
 
     return (
@@ -54,21 +98,21 @@ const AddACamp = () => {
                                 </label>
                                 <input type="text" placeholder="Services" {...register('services',{required:true})} className="input input-bordered w-full "required />
                             </div>
+                         
                         </div>
                     </div>
 
                     <div className="md:flex gap-4">
                         <div className="form-control w-full my-6">
                             <label className="label">
-                                <span className="label-text">Category*</span>
+                                <span className="label-text">Healthcare Professionals*</span>
                             </label>
-                            <select defaultValue='default' {...register("category", { required: true })} className="select select-bordered w-full ">
-                                <option disabled value='default'>Select A Category</option>
-                                <option value="salad">Salad</option>
-                                <option value="pizza">Pizza</option>
-                                <option value="soup">Soup</option>
-                                <option value="dessert">Dessert</option>
-                                <option value="drinks">Drinks</option>
+                            <select defaultValue='default'  placeholder="Select A Category" required  {...register("healthPro", { required: true })} className="select select-bordered w-full ">
+                                <option disabled   value='default'>Select A Category</option>
+                    
+                                {
+                                    hp?.map(person=><option key={person._id}>{person?.name} , {person?.email}</option>)
+                                }
                             </select>
                         </div>
                         <div className="form-control w-full my-6">

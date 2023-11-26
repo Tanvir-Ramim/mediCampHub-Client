@@ -6,6 +6,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged,
 
 import { useEffect } from "react";
 import auth from './fireabase';
+import useAxiosNormal from '../hooks/useAxiosNormal';
 
 
 
@@ -16,7 +17,7 @@ export const AuthContext=createContext(null)
 const AuthProvider = ({children}) => {
      const [user,setUser]= useState(null)
      const [loader,setLoader]=useState(true)
-
+      const axiosNormal=useAxiosNormal()
      
      const createUser=(email,password)=>{
         setLoader(true)
@@ -40,8 +41,20 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unSubscriber= onAuthStateChanged(auth,currentUser=>{
             console.log(currentUser)
+
+            const userEmail=currentUser?.email || user?.email
+            const loggedUser={email:userEmail}
             setUser(currentUser)
             setLoader(false)
+
+            if(currentUser){
+                axiosNormal.post('/jwt',loggedUser,{withCredentials:true})
+            }
+            else{
+                 axiosNormal.post('/jwtRemove',loggedUser,{
+                    withCredentials:true
+                 })
+            }
       })
       return()=>{
          return unSubscriber ()

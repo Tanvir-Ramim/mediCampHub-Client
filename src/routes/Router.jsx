@@ -32,11 +32,11 @@ import ManageRegisterCamps from "../pages/dashboard/ManageRegisteredCamps/Manage
           element:<ContactUs></ContactUs>
         },
         {
-          path: '/login',
+          path: 'login',
           element: <Login></Login>
         },
         {
-          path: '/registration',
+          path: 'registration',
           element: <Registration></Registration>
         }
       ]

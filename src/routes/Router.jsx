@@ -13,6 +13,8 @@ import AddACamp from "../pages/dashboard/addACamp/AddACamp";
 import OrganizerProfile from "../pages/dashboard/OrganizerProfile/OrganizerProfile";
 import ManageCamps from "../pages/dashboard/manageCamps/ManageCamps";
 import ManageRegisterCamps from "../pages/dashboard/ManageRegisteredCamps/ManageRegisterCamps";
+import PrivateRoute from "./PrivateRoute";
+import OrganizerRoute from "./OrganizerRoute";
 
   const Router = createBrowserRouter([
     {
@@ -44,15 +46,15 @@ import ManageRegisterCamps from "../pages/dashboard/ManageRegisteredCamps/Manage
     {
       
         path:'/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children:[
           {
              path:'add-a-camp',
-             element: <AddACamp></AddACamp>
+             element: <OrganizerRoute><AddACamp></AddACamp></OrganizerRoute>
           },
           {  
              path:'organizer-profile',
-             element: <OrganizerProfile></OrganizerProfile>
+             element: <OrganizerRoute><OrganizerProfile></OrganizerProfile></OrganizerRoute>
           },
           {
              path:'manage-camps',

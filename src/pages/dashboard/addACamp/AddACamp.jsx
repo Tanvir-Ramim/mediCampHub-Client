@@ -45,7 +45,8 @@ const AddACamp = () => {
                 healthPro:data.healthPro.split(", ")[1],
                 image: res.data.data.display_url,
                 location: data.location,
-                services: data.services
+                services: data.services,
+                participant:0
             }
 
             axiosNormal.post('/camps',campsInfo)
@@ -108,7 +109,7 @@ const AddACamp = () => {
                                 <span className="label-text">Healthcare Professionals*</span>
                             </label>
                             <select defaultValue='default'  placeholder="Select A Category" required  {...register("healthPro", { required: true })} className="select select-bordered w-full ">
-                                <option disabled   value='default'>Select A Category</option>
+                                <option disabled   value='default'>Select Healthcare Professionals</option>
                     
                                 {
                                     hp?.map(person=><option key={person._id}>{person?.name} , {person?.email}</option>)

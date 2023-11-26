@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../Authentication/AuthProvider";
 import useAxiosNormal from "../../hooks/useAxiosNormal";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const{userLogIn,googleLogIn}=useContext(AuthContext)
@@ -10,6 +11,8 @@ const Login = () => {
   const [error, setError] = useState(null)
   const navigate=useNavigate()
   const location=useLocation()
+   
+   const from=location.state?.from?.pathname || '/'
   const handleLogIn=(e)=>{
        e.preventDefault()
        const form=e.target 
@@ -20,7 +23,7 @@ const Login = () => {
        userLogIn(email,password)
        .then(()=>{
         //   toast.success('Successfully Login')
-            navigate(location?.state? location.state:'/')
+            navigate(location?.state? from:'/')
        })
        .catch(error=>{
            setError(error.message)
@@ -35,7 +38,8 @@ const Login = () => {
          }
          axiosNormal.post('/users',userInfo)
          .then(()=>{
-             navigate('/')
+          Swal.fire("successfully login!");
+             navigate(from,{replace:true})
          })
     })
 }

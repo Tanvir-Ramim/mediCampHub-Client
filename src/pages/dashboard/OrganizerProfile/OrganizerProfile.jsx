@@ -14,7 +14,11 @@ const OrganizerProfile = () => {
     const { register, handleSubmit } = useForm();
     const { user,setUser } = useAuth()
     const axiosNormal=useAxiosNormal()
-    const role = useRole()
+    const {role,isLoading} = useRole()
+    if(isLoading)
+    {
+        return <span className="loading loading-dots loading-lg"></span>
+    }
     console.log(user)
     const onSubmit = async (data) => {
             // e.preventDefault()

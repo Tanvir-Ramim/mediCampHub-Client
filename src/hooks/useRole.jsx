@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxiosNormal from "./useAxiosNormal";
 
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const useRole = () => {
      const axiosNormal=useAxiosNormal()
@@ -11,15 +12,13 @@ const useRole = () => {
           return res
     }
         
-       const{data:userRole,isPending}=useQuery({
+       const{data:userRole, isLoading }=useQuery({
         queryKey:[user?.email,'userRole'],
         queryFn: roleFn
        })
-         if(isPending){
-            return
-         }
+      
          const role= userRole?.data?.role
-    return role
+    return {role,isLoading}
 };
 
 export default useRole;

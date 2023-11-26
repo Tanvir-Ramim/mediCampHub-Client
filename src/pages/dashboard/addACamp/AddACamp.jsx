@@ -43,10 +43,11 @@ const AddACamp = () => {
                 details: data.details,
                 fees: data.fees,
                 healthPro:data.healthPro.split(", ")[1],
+                healthCareName:data.healthPro.split(", ")[0],
                 image: res.data.data.display_url,
                 location: data.location,
                 services: data.services,
-                participant:0
+                participant:5
             }
 
             axiosNormal.post('/camps',campsInfo)

@@ -73,7 +73,7 @@
     },
     {
       "CampName": "Community Blood Drive",
-      "CampFees": 0.00,
+      "CampFees": 15.00,
       "VenueLocation": "Red Cross Mobile Unit",
       "SpecializedServicesProvided": ["Blood Donations", "Health Information Booths"],
       "TargetAudience": ["Community", "Adults"],

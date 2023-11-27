@@ -5,6 +5,8 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import ErrorPage from "../../../components/errorpage/ErrorPage";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageCamps = () => {
     const axiosSecure = useAxiosSecure()
@@ -23,6 +25,33 @@ const ManageCamps = () => {
     }
     if (isLoading || isPending) {
         return <Skeleton count={10} />
+    }
+
+    const handleDelete=(id)=>{
+        Swal.fire({
+            title: "Are you sure Delete?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then(async(result) => {
+            if (result.isConfirmed) {
+                const res=await axiosSecure.delete(`/camp/${id}`)
+                if(res.data.deletedCount>0){
+                    refetch()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+
+                }
+            }
+          });
+
+           
     }
      
     
@@ -56,8 +85,8 @@ const ManageCamps = () => {
                                 <td>{item?.participant}</td>
                                 <td>{item?.scheduled}</td>
                                 <td>${item?.fees}</td>
-                                <td>Update</td>
-                                <td><button className="btn btn-sm btn-square btn-outline">
+                                <td><Link to={`/dashboard/update-camp/${item?._id}`}><button className="bg-[#B354A6] text-white px-1 rounded">Update</button></Link></td>
+                                <td><button onClick={()=>handleDelete(item._id)} className="btn btn-sm btn-square btn-outline">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button></td>
                             </tr>)

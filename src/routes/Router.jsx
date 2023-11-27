@@ -17,6 +17,7 @@ import PrivateRoute from "./PrivateRoute";
 import OrganizerRoute from "./OrganizerRoute";
 import Details from "../pages/details/Details";
 import ErrorPage from "../components/errorpage/ErrorPage";
+import Update from "../pages/Update/Update";
 
   const Router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ import ErrorPage from "../components/errorpage/ErrorPage";
           {
              path:'manage-registered-camps',
              element: <PrivateRoute><ManageRegisterCamps></ManageRegisterCamps></PrivateRoute>
+          },
+          {
+             path:'update-camp/:id',
+             element: <Update></Update>
           }
         ]
       

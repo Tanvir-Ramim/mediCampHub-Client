@@ -3,12 +3,14 @@ import useAxiosNormal from "../../../hooks/useAxiosNormal";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddACamp = () => {
     const axiosNormal = useAxiosNormal()
+    const {user}=useAuth()
     const [hp,setHp]=useState([])
     
     useEffect(()=>{
@@ -27,7 +29,7 @@ const AddACamp = () => {
             toast.error('Please Select a Healthcare Professionals')
             return 
         }
-        console.log(data.healthPro)
+       
     
         const imageFile = { image: data.image[0] }
         const res = await axiosNormal.post(image_hosting_api, imageFile, {
@@ -47,7 +49,8 @@ const AddACamp = () => {
                 image: res.data.data.display_url,
                 location: data.location,
                 services: data.services,
-                participant:5
+                participant:0,
+                userEmail:user?.email
             }
 
             axiosNormal.post('/camps',campsInfo)
@@ -119,14 +122,14 @@ const AddACamp = () => {
                         </div>
                         <div className="form-control w-full my-6">
                             <label className="label">
-                                <span className="label-text">Camp Fees</span>
+                                <span className="label-text">Camp Fees*</span>
 
                             </label>
                             <input type="number" placeholder="Camp Fees" {...register('fees', { required: true })} className="input input-bordered w-full " required/>
                         </div>
                         <div className="form-control w-full my-6">
                             <label className="label">
-                                <span className="label-text">Target Audience</span>
+                                <span className="label-text">Target Audience*</span>
                             </label>
                             <input type="text" placeholder="Target Audience" {...register('audience', { required: true })} className="input input-bordered w-full " required />
                         </div>
@@ -134,7 +137,7 @@ const AddACamp = () => {
 
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text">Recipe Details</span>
+                            <span className="label-text">Recipe Details*</span>
                         </label>
                         <textarea {...register('details')} className="textarea textarea-bordered h-24" placeholder="Comprehensive Description" required></textarea>
                     </div>
@@ -142,7 +145,7 @@ const AddACamp = () => {
                     <div className="md:flex mt-5">
                         <div className="w-full mb-4 md:mb-0">
                         <label className="label">
-                                    <span className="label-text">Select Picture</span>
+                                    <span className="label-text">Select Picture*</span>
                                 </label>
                             <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" required/>
                         </div>
@@ -150,7 +153,7 @@ const AddACamp = () => {
                         <div>
                             <div className="form-control w-full ">
                                 <label className="label">
-                                    <span className="label-text">Scheduled Date and Time</span>
+                                    <span className="label-text">Scheduled Date and Time*</span>
                                 </label>
 
                                 <input type="datetime-local" placeholder="Recipe Name" {...register('Scheduled', { required: true })} className="input input-bordered w-full " required />

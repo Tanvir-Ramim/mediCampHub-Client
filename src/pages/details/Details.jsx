@@ -11,8 +11,9 @@ import { MdDescription, MdEmojiPeople, MdMedicalServices } from "react-icons/md"
 import { IoTimeSharp } from "react-icons/io5";
 import { IoIosPeople } from "react-icons/io";
 import RegisterPage from "../../components/RegisterPage/RegisterPage";
-const Details = () => {
 
+const Details = () => {
+    
     const { id } = useParams()
     const axiosNormal = useAxiosNormal()
 
@@ -21,7 +22,7 @@ const Details = () => {
         return res.data
     }
 
-    const { data: campDetails, isLoading, isPending, isError } = useQuery({
+    const { data: campDetails, isLoading, isPending, isError,refetch } = useQuery({
         queryKey: ['campDetails', id],
         queryFn: campsDetailsFn
     })
@@ -34,11 +35,9 @@ const Details = () => {
         return <Skeleton count={10} />
     }
 
-    console.log(campDetails)
-
     const { _id, name, services, scheduled, participant, location, image, fees, audience, healthCareName, details } = campDetails || {}
 
-
+   
     return (
         <MainDiv>
            
@@ -77,7 +76,7 @@ const Details = () => {
                                 
                                 <p className="font-medium flex items-center gap-1"> <IoIosPeople /> Participants: <span className="font-normal">{participant}</span></p>
                                 <hr className="border-l-2 w-3 hidden sm:block  border-[#B354A6]"/>
-                                <RegisterPage></RegisterPage>
+                            <RegisterPage participant={participant} refetch={refetch} id={_id}></RegisterPage>
                             </div>
                             <div>
                                 <h1 className="text-lg items-center gap-1  flex  font-semibold"> 

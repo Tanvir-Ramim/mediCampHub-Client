@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Card = ({info}) => {
     const {_id,name,services,scheduled,participant,location,image,fees,audience,healthCareName}=info || {}
     return (
-        <div className='col-span-1  rounded-md shadow-md group'>
+        <div className='col-span-1 p-3  rounded-md shadow-md group'>
              <div className='flex flex-col gap-2 w-full'>
         <div
           className='

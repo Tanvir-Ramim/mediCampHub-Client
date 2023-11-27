@@ -69,7 +69,7 @@ import ErrorPage from "../components/errorpage/ErrorPage";
           },
           {
              path:'manage-registered-camps',
-             element: <ManageRegisterCamps></ManageRegisterCamps>
+             element: <PrivateRoute><ManageRegisterCamps></ManageRegisterCamps></PrivateRoute>
           }
         ]
       

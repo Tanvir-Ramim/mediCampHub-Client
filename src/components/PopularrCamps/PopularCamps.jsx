@@ -17,7 +17,6 @@ const PopularCamps = () => {
          queryKey:['topCamps'],
          queryFn: topCamps
     })
-      console.log(topCampInfo)
 
        if(isLoading || isPending){
          return   <Skeleton count={10} />

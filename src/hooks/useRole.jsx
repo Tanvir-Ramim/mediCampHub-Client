@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
-import useAxiosNormal from "./useAxiosNormal";
-
 import 'react-loading-skeleton/dist/skeleton.css'
+import useAxiosSecure from "./useAxiosSecure";
 
 const useRole = () => {
-     const axiosNormal=useAxiosNormal()
+      const axiosSecure=useAxiosSecure()
      const {user}=useAuth()
     const roleFn=async()=>{
-          const res= await axiosNormal.get(`/userRole/${user.email}`)
+          const res= await axiosSecure.get(`/userRole/${user.email}`)
           return res
     }
         

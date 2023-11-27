@@ -60,7 +60,6 @@ const Update = () => {
         
         }
              const res= await axiosSecure.put('/updateCamp',campsInfo)
-             console.log(res.data)
              if(res.data.modifiedCount>0){
                 toast.success('Successfully Update') 
                 reset()

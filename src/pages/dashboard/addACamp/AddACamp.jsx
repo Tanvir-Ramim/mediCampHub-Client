@@ -56,7 +56,6 @@ const AddACamp = () => {
             axiosNormal.post('/camps',campsInfo)
             .then(res=>{
                  if(res.data.insertedId){
-                    console.log(res.data)
                     reset()
                     Swal.fire({
                       position: "top-end",

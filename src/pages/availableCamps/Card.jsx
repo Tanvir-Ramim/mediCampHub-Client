@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Card = ({info}) => {
-    console.log(info)
     const {_id,name,services,scheduled,participant,location,image,fees,audience,healthCareName}=info || {}
     return (
         <div className='col-span-1  rounded-md shadow-md group'>
@@ -45,7 +44,7 @@ Services: {services}
             </div>
             <div className='flex justify-between'>
                 <h1>Healthcare Professional: {healthCareName}</h1>
-                <Link className='underline text-[#B354A6]'>More Details</Link>
+                <Link to={`/details/${_id}`}> <button className="btn   btn-sm btn-outline text-[#B354A6] border-b-4 border-0">More Details</button></Link>
             </div>
         </div>
       </div>

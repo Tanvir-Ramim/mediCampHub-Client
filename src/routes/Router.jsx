@@ -15,11 +15,14 @@ import ManageCamps from "../pages/dashboard/manageCamps/ManageCamps";
 import ManageRegisterCamps from "../pages/dashboard/ManageRegisteredCamps/ManageRegisterCamps";
 import PrivateRoute from "./PrivateRoute";
 import OrganizerRoute from "./OrganizerRoute";
+import Details from "../pages/details/Details";
+import ErrorPage from "../components/errorpage/ErrorPage";
 
   const Router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement:<ErrorPage></ErrorPage>,
       children: [
         {
             index: true, 
@@ -28,6 +31,10 @@ import OrganizerRoute from "./OrganizerRoute";
         {
           path: 'availableCamps',
           element:<AvailableCamps></AvailableCamps>
+        },
+        {
+          path: 'details/:id',
+          element:<Details></Details>
         },
         {
           path: 'contactUs',

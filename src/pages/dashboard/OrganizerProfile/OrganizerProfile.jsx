@@ -21,7 +21,6 @@ const OrganizerProfile = () => {
     {
         return <span className="loading loading-dots loading-lg"></span>
     }
-    console.log(user)
     const onSubmit = async (data) => {
             const imageFile={image: data.image[0]}
             const res= await axiosNormal.post(image_hosting_api,imageFile,{
@@ -89,7 +88,7 @@ const OrganizerProfile = () => {
                         <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
                     </div>
                              <div className='flex justify-center'>
-                                <input className='bg-gray-500 text-white px-6 py-1 rounded-md' type="submit" value="Submit" />
+                                <input className='bg-gray-500 text-white px-6 py-1 cursor-pointer rounded-md' type="submit" value="Submit" />
                              </div>
                           </form>
                         </div>

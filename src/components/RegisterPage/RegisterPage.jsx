@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
-const RegisterPage = ({id,participant,refetch}) => {
-       
+const RegisterPage = ({id,participant,refetch,forRegister}) => {
+        
         const newParticipant=participant+1
       
         const {user}=useAuth()
@@ -12,6 +12,10 @@ const RegisterPage = ({id,participant,refetch}) => {
         const  closeModal = () => {
           document.getElementById('my_modal_3').close();
         };
+
+
+      const{name:CampName,scheduled,location,fees}=forRegister ||{}
+      
 
      const handleRegister=async(e)=>{
         e.preventDefault()
@@ -23,8 +27,10 @@ const RegisterPage = ({id,participant,refetch}) => {
         const address =form.address.value 
         const campId= id
         const userMail=user.email
+        const paymentStatus='Pay'
+        const ConfirmationStatus='pending'
         const registerInfo={
-          name,age,gender,phone,address,campId,userMail
+          name,age,gender,phone,address,campId,userMail,paymentStatus,ConfirmationStatus,CampName,scheduled,location,fees
         }
           const res=await axiosSecure.post('/register',registerInfo)
           if(res.data.insertedId){
@@ -35,7 +41,6 @@ const RegisterPage = ({id,participant,refetch}) => {
               const info={id,newParticipant }
             axiosSecure.put('/participate',info)
             .then(res=>{
-                console.log(res.data.modifiedCount)
                 if(res.data.modifiedCount){
                   refetch()
                 }
@@ -97,7 +102,8 @@ const RegisterPage = ({id,participant,refetch}) => {
 RegisterPage.propTypes={
     id: PropTypes.string,
     participant: PropTypes.number,
-    refetch: PropTypes.func
+    refetch: PropTypes.func,
+    forRegister:PropTypes.object
 }
 
 export default RegisterPage;

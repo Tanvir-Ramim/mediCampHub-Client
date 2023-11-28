@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -73,6 +74,7 @@ const AddACamp = () => {
 
     return (
         <div>
+            <Helmet><title>MCH | Dashboard | AddCamp</title></Helmet>
             <h1 className="text-center text-[#B354A6] text-5xl mt-5">Add A Camp</h1>
             <div className="flex min-h-[70vh] px-6 items-center justify-center ">
             <div className="w-full">

@@ -5,6 +5,7 @@ import { MdEmail } from 'react-icons/md';
 
 import Swal from "sweetalert2";
 import Map from '../../components/map/Map';
+import { Helmet } from 'react-helmet';
 
 
 const ContactUs = () => {
@@ -15,6 +16,7 @@ const ContactUs = () => {
     }
     return (
         <div>
+            <Helmet><title>MCH | ContactUs</title></Helmet>
             <div className="bg-[#B354A6] flex items-center justify-evenly ">
                 <h1 className="md:text-4xl text-3 p-5 font-semibold text-white ">Contact Us</h1>
                 <p><span className="text-white">Medi Camps Hub</span> {'>'} Contact Us</p>

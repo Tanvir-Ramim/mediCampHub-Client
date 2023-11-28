@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import ErrorPage from "../../components/errorpage/ErrorPage";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 
 const Update = () => {
@@ -73,6 +74,7 @@ const Update = () => {
 
     return (
         <div>
+            <Helmet><title>MCH | CampsUpdate</title></Helmet>
         <h1 className="text-center text-[#B354A6] text-5xl mt-5">Update Camp</h1>
         <div className="flex min-h-[70vh] px-6 items-center justify-center ">
         <div className="w-full">

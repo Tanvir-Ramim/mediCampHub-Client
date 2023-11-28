@@ -18,6 +18,9 @@ import OrganizerRoute from "./OrganizerRoute";
 import Details from "../pages/details/Details";
 import ErrorPage from "../components/errorpage/ErrorPage";
 import Update from "../pages/Update/Update";
+import RegisteredCamps from "../pages/AllParticipant/RegisteredCamps/RegisteredCamps";
+import PaymentHistory from "../pages/AllParticipant/PaymentHistory/PaymentHistory";
+import Feedback from "../pages/AllParticipant/Feedback/Feedback";
 
   const Router = createBrowserRouter([
     {
@@ -62,19 +65,32 @@ import Update from "../pages/Update/Update";
           },
           {  
              path:'organizer-profile',
-             element: <OrganizerRoute><OrganizerProfile></OrganizerProfile></OrganizerRoute>
+             element: <PrivateRoute><OrganizerProfile></OrganizerProfile></PrivateRoute>
           },
           {
              path:'manage-camps',
-             element: <ManageCamps></ManageCamps>
+             element: <OrganizerRoute><ManageCamps></ManageCamps></OrganizerRoute>
           },
           {
              path:'manage-registered-camps',
-             element: <PrivateRoute><ManageRegisterCamps></ManageRegisterCamps></PrivateRoute>
+             element: <OrganizerRoute><ManageRegisterCamps></ManageRegisterCamps></OrganizerRoute>
           },
           {
              path:'update-camp/:id',
-             element: <Update></Update>
+             element: <OrganizerRoute><Update></Update></OrganizerRoute>
+          },
+          // route for Participant
+          {
+             path : 'registered-camps-p',
+             element:<RegisteredCamps></RegisteredCamps>
+          },
+          {
+             path : 'payment-history',
+             element: <PaymentHistory></PaymentHistory>
+          },
+          {
+             path : 'feedBack-ratings',
+             element: <Feedback></Feedback>
           }
         ]
       

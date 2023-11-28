@@ -3,8 +3,10 @@ import useAuth from "./useAuth";
 import 'react-loading-skeleton/dist/skeleton.css'
 import useAxiosSecure from "./useAxiosSecure";
 
+
 const useRole = () => {
       const axiosSecure=useAxiosSecure()
+
      const {user}=useAuth()
     const roleFn=async()=>{
           const res= await axiosSecure.get(`/userRole/${user.email}`)

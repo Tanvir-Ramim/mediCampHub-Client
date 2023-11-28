@@ -3,6 +3,7 @@ import useAllCamps from "../../hooks/useAllCamps";
 import MainDiv from "../../shared/MainDiv/MainDiv";
 import Card from "./Card";
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Helmet } from "react-helmet";
 
 const AvailableCamps = () => {
     const {campsInfo ,isLoading,isPending}=useAllCamps()
@@ -11,6 +12,7 @@ const AvailableCamps = () => {
     }
     return (
         <MainDiv>
+            <Helmet><title>MCH | Available Camps</title></Helmet>
             <div className="mx-auto text-center md:w-4/12 my-8">
             
              <h3 className="uppercase text-4xl border-y-4 py-4">All Available <span className="text-[#B354A6]">Camps</span></h3>

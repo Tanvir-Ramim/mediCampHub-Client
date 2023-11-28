@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import useAxiosNormal from '../../../hooks/useAxiosNormal';
 import { updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -47,7 +48,8 @@ const OrganizerProfile = () => {
            }
     }
     return (
-        <div className=' h-full flex items-center justify-center'>
+        <div className=' h-full mt-6 flex items-center justify-center'>
+            <Helmet><title>MCH | Dashboard | Profile</title></Helmet>
             <div className='bg-[#F9F1EE] w-[600px] shadow-lg  '>
                 <img className='h-36  overflow-hidden w-[600px] ' src={cover} alt="" />
                 <div className='flex  justify-center -mt-6'>

@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import ErrorPage from "../../../components/errorpage/ErrorPage";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const ManageCamps = () => {
     const axiosSecure = useAxiosSecure()
@@ -58,6 +59,7 @@ const ManageCamps = () => {
 
     return (
         <div className="p-5">
+            <Helmet><title>MCH | Dashboard | ManageCamps</title></Helmet>
             <div className="mx-auto text-center md:w-4/12 my-8 md:mt-10">
                 <h3 className="uppercase text-4xl border-y-4 py-4">Manage Your <span className="text-[#B354A6]">Camps</span> </h3>
             </div>

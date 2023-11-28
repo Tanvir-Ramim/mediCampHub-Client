@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { MdLibraryAdd } from "react-icons/md";
-import { FaCashRegister, FaHome } from "react-icons/fa";
+import { FaCashRegister } from "react-icons/fa";
 import { GiCampingTent } from "react-icons/gi";
 
 const OrganizerNav = () => {
@@ -26,12 +26,7 @@ const OrganizerNav = () => {
                     Manage Registered
                 </NavLink></li>
 
-                <div className="divider">OR</div>
-
-
-                <li className="flex gap-2 "><FaHome className=" text-xl mt-1 " /> <NavLink to='/' className={ "text-white  text-lg px-2  font-semibold"}>
-                    Home
-                </NavLink></li>
+               
 
             </ul>
         </div>

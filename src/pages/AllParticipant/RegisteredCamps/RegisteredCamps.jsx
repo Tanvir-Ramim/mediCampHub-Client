@@ -56,26 +56,16 @@ const RegisteredCamps = () => {
                         });
                         refetch()
                     }
-
-
                 }
-
-
-
 
             }
         });
-
-
-
     }
-
-
 
 
     return (
         <div className="p-5">
-            <Helmet><title>MCH | </title></Helmet>
+            <Helmet><title>MCH | Register Camps </title></Helmet>
             <div className="mx-auto text-center md:w-4/12 my-8 md:mt-10">
                 <h3 className="uppercase text-4xl border-y-4 py-4"> Your Register <span className="text-[#B354A6]">Camps</span> </h3>
             </div>
@@ -108,12 +98,9 @@ const RegisteredCamps = () => {
                                 <th >{
                                     item?.paymentStatus === "Pay" ? <Link to={`/dashboard/payment?id=${item.campId},${item._id}`} className="bg-red-500  py-1 text-white px-4 rounded-md">Pay</Link> : <button disabled className="bg-[#B354A6]  py-1 text-white px-4 rounded-md">Paid</button>
                                 }</th>
-
                                 <th >{
                                     item?.paymentStatus === "Pay" ? <button onClick={() => handleCancelRegister(item._id, item.campId)}><ImCancelCircle className="text-3xl" /></button> : <ImCancelCircle className="text-3xl text-gray-400 " />
                                 }</th>
-
-
                             </tr>)
                         }
                     </tbody>

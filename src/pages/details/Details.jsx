@@ -12,7 +12,7 @@ import { IoTimeSharp } from "react-icons/io5";
 import { IoIosPeople } from "react-icons/io";
 import RegisterPage from "../../components/RegisterPage/RegisterPage";
 import useRole from "../../hooks/useRole";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Details = () => {
 

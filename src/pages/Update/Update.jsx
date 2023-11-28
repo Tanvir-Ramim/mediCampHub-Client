@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import ErrorPage from "../../components/errorpage/ErrorPage";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+
 
 
 const Update = () => {

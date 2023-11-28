@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useAuth from "../../../hooks/useAuth";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;

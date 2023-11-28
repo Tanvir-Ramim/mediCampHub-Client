@@ -5,7 +5,7 @@ import { MdEmail } from 'react-icons/md';
 
 import Swal from "sweetalert2";
 import Map from '../../components/map/Map';
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet-async";
 
 
 const ContactUs = () => {

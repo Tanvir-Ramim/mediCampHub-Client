@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Authentication/AuthProvider";
 import useAxiosNormal from "../../hooks/useAxiosNormal";
 import Swal from "sweetalert2";
@@ -45,6 +45,7 @@ const Login = () => {
 }
     return (
         <div>
+           <Helmet><title>MCH | LogIn</title></Helmet>
         <div className="hero min-h-screen bg-base-200 mb-6">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left">

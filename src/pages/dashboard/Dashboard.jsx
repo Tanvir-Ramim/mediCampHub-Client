@@ -6,8 +6,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { FaHome } from "react-icons/fa";
 import ParticipantNav from "../../components/ParticipantNav/ParticipantNav";
-import { Helmet } from "react-helmet";
-import { LiaCampgroundSolid } from "react-icons/lia";
+import { Helmet } from "react-helmet-async";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { FaCampground } from "react-icons/fa6";
 

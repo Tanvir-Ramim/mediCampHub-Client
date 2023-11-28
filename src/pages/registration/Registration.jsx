@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Authentication/AuthProvider";
 import useAxiosNormal from "../../hooks/useAxiosNormal";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Registration = () => {
     const{createUser,setUser,user}=useContext(AuthContext)
@@ -67,6 +67,8 @@ const Registration = () => {
        }
     return (
         <div>
+<Helmet><title>MCH | Available Camps</title></Helmet>
+
         <div className="hero min-h-screen  mb-5">
 <div className="hero-content flex-col lg:flex-row-reverse">
 <div className="text-center lg:text-left">

@@ -7,7 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import ErrorPage from "../../../components/errorpage/ErrorPage";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+
 
 const ManageCamps = () => {
     const axiosSecure = useAxiosSecure()

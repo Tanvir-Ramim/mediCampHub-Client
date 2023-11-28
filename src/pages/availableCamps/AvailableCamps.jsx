@@ -3,7 +3,7 @@ import useAllCamps from "../../hooks/useAllCamps";
 import MainDiv from "../../shared/MainDiv/MainDiv";
 import Card from "./Card";
 import 'react-loading-skeleton/dist/skeleton.css'
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const AvailableCamps = () => {
     const {campsInfo ,isLoading,isPending}=useAllCamps()

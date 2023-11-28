@@ -40,6 +40,9 @@ const Feedback = () => {
         const rating = form.rating.value
         const campName = selectedCampName
         const comment = form.comment.value 
+        if(rating>5){
+            return toast.error("The value of rating will be 5 or less than 5")
+        }
         const reviewInfo = {
             rating, campName, comment,
             userName: user?.displayName,

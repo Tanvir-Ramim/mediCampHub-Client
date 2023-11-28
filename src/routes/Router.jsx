@@ -39,7 +39,7 @@ import PaymentPage from "../pages/AllParticipant/RegisteredCamps/PaymentPage";
         },
         {
           path: 'details/:id',
-          element:<Details></Details>
+          element: <PrivateRoute><Details></Details></PrivateRoute>
         },
         {
           path: 'contactUs',

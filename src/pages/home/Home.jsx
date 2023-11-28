@@ -3,6 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import PopularCamps from "../../components/PopularrCamps/PopularCamps";
 import StayHealthy from "../../components/stayhealthy/stayHealthy";
 import TopHP from "../../components/topHP/TopHP";
+import Testimonials from "./testimonials/Testimonials";
 
 
 
@@ -15,6 +16,7 @@ const Home = () => {
            <PopularCamps></PopularCamps>
            <StayHealthy></StayHealthy>
            <TopHP></TopHP>
+           <Testimonials></Testimonials>
         </div>
     );
 };

@@ -1,36 +1,39 @@
 
-
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
-
 import { useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import PropTypes from 'prop-types';
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 
 
-const CheckOutForm = ({payAmount}) => {
+const CheckOutForm = ({campDetails,registerId}) => {
      const [error,setError]=useState('')
      const [clientSecret,setClientSecret]=useState("")
-     const   { user} = useAuth();
+     const { user} = useAuth();
     const stripe=useStripe()
     const elements=useElements()
     const axiosSecure=useAxiosSecure()
-    const [transationId,setTransactionId]=useState('')
-//    const [cart]=useCart()
-   const totalPrice= '55.00'
-   console.log(payAmount)
-    console.log(totalPrice)
+    const navigate=useNavigate()
+     
+
+    const { name, scheduled, location, fees } = campDetails || {}
+
+
+    
      useEffect(()=>{
-         axiosSecure.post('/create-payment-intent',{price: totalPrice})
+         axiosSecure.post('/create-payment-intent',{price: fees})
          .then(res=>{
               setClientSecret(res.data.clientSecret)
          })
-     },[axiosSecure])
-
+     },[axiosSecure,fees])
     const handleSubmit=async(event)=>{
          event.preventDefault()
+         setError('')
         if(!stripe || ! elements){
             return
         }
@@ -43,10 +46,9 @@ const CheckOutForm = ({payAmount}) => {
             card,
          })   
          if (error) {
-            console.log('[error]', error);
             setError(error.message)
           } else {
-            // console.log('[PaymentMethod]', paymentMethod);
+            console.log('[PaymentMethod]', paymentMethod);
             setError('')
           }
           const {paymentIntent,error:ConfirmError}=await stripe.confirmCardPayment(clientSecret,{
@@ -60,13 +62,36 @@ const CheckOutForm = ({payAmount}) => {
               }
           })
           if(ConfirmError){
-             setError('confirmError',ConfirmError)
-           
+           setError(ConfirmError.message)
+             
           }
           else{
              if(paymentIntent.status==='succeeded'){
-              console.log(paymentIntent)
-               setTransactionId(paymentIntent.id)
+               const postInfo={
+                email: user?.email,
+                campName:name,
+                 fee:fees,
+                 venue: location,
+                 scheduled: scheduled,
+                 transactionId: paymentIntent.id
+             }
+             
+              const res= await axiosSecure.post('/payment',postInfo)
+
+                if(res.data.insertedId){
+                    const changeInfo={
+                       registerId,
+                       status: 'Paid'
+                    }
+
+                    const result=await axiosSecure.put('/afterPayment',changeInfo)
+                    console.log(result.data.modifiedCount)
+                    if(result.data.modifiedCount){
+                      toast.success('Payment Successfully')
+                      navigate(-1)
+                    }
+                }
+               
              }
           }
     }
@@ -89,16 +114,18 @@ const CheckOutForm = ({payAmount}) => {
           },
         }}
       />
-      <button disabled={!stripe || !clientSecret} className="btn btn-sm btn-primary mt-5" type="submit">
+      <button disabled={!stripe || !clientSecret} className="btn btn-sm bg-[#B354A6] text-white   mt-5" type="submit">
         Pay
       </button>
     </form>
     <p className="text-red-500 text-xl">{error}</p>
-    {
-      transationId && <p className="text-xl text-red-500">{transationId}</p>
-    }
         </div>
     );
 };
 
+
+CheckOutForm.propTypes={
+  campDetails: PropTypes.object,
+  registerId: PropTypes.string
+}
 export default CheckOutForm;

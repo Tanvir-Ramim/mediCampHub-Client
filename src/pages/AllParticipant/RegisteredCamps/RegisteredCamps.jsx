@@ -5,7 +5,8 @@ import ErrorPage from "../../../components/errorpage/ErrorPage";
 import Skeleton from "react-loading-skeleton";
 import { Helmet } from "react-helmet-async";
 import { ImCancelCircle } from "react-icons/im";
-import PaymentModal from "./PaymentModal";
+import { Link } from "react-router-dom";
+
 
 const RegisteredCamps = () => {
        const {user}=useAuth()
@@ -67,11 +68,11 @@ const RegisteredCamps = () => {
                             <th >{item?.fees}</th>
                             <th >{item?.ConfirmationStatus}</th>
                             <th >{
-                            item?.paymentStatus==="Pay" ?<PaymentModal payAmount={item.fess}></PaymentModal>  :  <button disabled className="bg-[#B354A6]  py-1 text-white px-4 rounded-md">Paid</button>
+                            item?.paymentStatus==="Pay" ? <Link to={`/dashboard/payment?id=${item.campId},${item._id}`}className="bg-red-500  py-1 text-white px-4 rounded-md">Pay</Link>:  <button disabled className="bg-[#B354A6]  py-1 text-white px-4 rounded-md">Paid</button>
                             }</th>
                             
                             <th >{
-                                    item?.paymentStatus==="Pay" ? <button onClick={()=>handleCancelRegister(item._id)}><ImCancelCircle  className="text-3xl"/></button> : <ImCancelCircle  className="text-3xl "/>
+                                    item?.paymentStatus==="Pay" ? <button onClick={()=>handleCancelRegister(item._id)}><ImCancelCircle  className="text-3xl"/></button> : <ImCancelCircle  className="text-3xl text-gray-400 "/>
                                 }</th>
 
                            

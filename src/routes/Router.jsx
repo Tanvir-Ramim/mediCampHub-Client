@@ -21,6 +21,7 @@ import Update from "../pages/Update/Update";
 import RegisteredCamps from "../pages/AllParticipant/RegisteredCamps/RegisteredCamps";
 import PaymentHistory from "../pages/AllParticipant/PaymentHistory/PaymentHistory";
 import Feedback from "../pages/AllParticipant/Feedback/Feedback";
+import PaymentPage from "../pages/AllParticipant/RegisteredCamps/PaymentPage";
 
   const Router = createBrowserRouter([
     {
@@ -91,6 +92,10 @@ import Feedback from "../pages/AllParticipant/Feedback/Feedback";
           {
              path : 'feedBack-ratings',
              element: <Feedback></Feedback>
+          },
+          {
+            path:'payment',
+            element: <PaymentPage></PaymentPage>
           }
         ]
       

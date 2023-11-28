@@ -40,7 +40,7 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
         const unSubscriber= onAuthStateChanged(auth,currentUser=>{
-            console.log(currentUser)
+            // console.log(currentUser)
 
             const userEmail=currentUser?.email || user?.email
             const loggedUser={email:userEmail}

@@ -9,6 +9,7 @@ import ParticipantNav from "../../components/ParticipantNav/ParticipantNav";
 import { Helmet } from "react-helmet-async";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { FaCampground } from "react-icons/fa6";
+import HealthCareNav from "./HealthCare/HealthCareNav";
 
 const Dashboard = () => {
   const { role, isLoading,isPending } = useRole()
@@ -28,6 +29,9 @@ const Dashboard = () => {
           
           {
              role ==='Participant' && <ParticipantNav></ParticipantNav>
+          }
+          {
+             role ==='Healthcare Professional' && <HealthCareNav></HealthCareNav>
           }
 
           <div className="divider">OR</div>

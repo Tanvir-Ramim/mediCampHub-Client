@@ -91,28 +91,26 @@ const Registration = () => {
     </div>
     <div className="form-control ">
       <div className="flex gap-2">
-      <div className="w-1/2">
+      <div className="w-2/3">
       <label className="label">
         <span className="label-text text-white text-lg">Password</span>
       </label>
-      <input name="password" type="password" placeholder="password" className="input w-full input-bordered" required />
+      <input name="password" type="password" placeholder="password" className="input input-bordered" required />
       </div>
-      <div className="w-1/2">
+      <div className="">
       <label className="label">
         <span className="label-text text-white text-lg">Select Role</span>
       </label>
-      <select name="role" defaultValue='default' className="select select-bordered">
+      <select name="role" defaultValue='default' className="select select-bordered w-full">
     <option >Participant</option>
     <option  value='Organizer'>Organizer</option>
     <option >Healthcare Professional</option>
-    
-    
   </select>
       </div>
       </div>
     </div>
     <div className="form-control mt-6">
-      <button className="btn btn-neutral">Submit</button>
+      <button className="btn #11192BA8 bg-[#11192BA8] btn-neutral">Submit</button>
     </div>
     <div className="text-white text-lg"><Link to='/logIn' >Go <span className="font-bold text-red-500 underline">Login</span> Page</Link></div>
     <div>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { GiArchiveRegister } from "react-icons/gi";
 import { MdPayment } from "react-icons/md";
 import { RiFeedbackFill } from "react-icons/ri";
-// <CgProfile className=" text-xl mt-1  " />
+
 
 const ParticipantNav = () => {
     return (

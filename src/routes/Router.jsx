@@ -22,6 +22,7 @@ import RegisteredCamps from "../pages/AllParticipant/RegisteredCamps/RegisteredC
 import PaymentHistory from "../pages/AllParticipant/PaymentHistory/PaymentHistory";
 import Feedback from "../pages/AllParticipant/Feedback/Feedback";
 import PaymentPage from "../pages/AllParticipant/RegisteredCamps/PaymentPage";
+import ManageCamCare from "../pages/dashboard/HealthCare/MangeCampCare/ManageCamCare";
 
   const Router = createBrowserRouter([
     {
@@ -96,6 +97,11 @@ import PaymentPage from "../pages/AllParticipant/RegisteredCamps/PaymentPage";
           {
             path:'payment',
             element: <PaymentPage></PaymentPage>
+          },
+          // rout for healthcare
+          {
+            path:'manage-camps-care',
+            element:<ManageCamCare></ManageCamCare>
           }
         ]
       

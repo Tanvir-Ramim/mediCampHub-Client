@@ -17,7 +17,6 @@ const PaymentPage = () => {
     const id=urlParams.get('id')
      const campId=id?.split(',')[0]
      const registerId=id?.split(',')[1]
-     console.log(registerId)
     const campsDetailsFn = async () => {
         const res = await axiosNormal.get(`/camp/${campId}`)
         return res.data

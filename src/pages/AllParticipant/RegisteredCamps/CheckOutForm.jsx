@@ -85,7 +85,6 @@ const CheckOutForm = ({campDetails,registerId}) => {
                     }
 
                     const result=await axiosSecure.put('/afterPayment',changeInfo)
-                    console.log(result.data.modifiedCount)
                     if(result.data.modifiedCount){
                       toast.success('Payment Successfully')
                       navigate(-1)

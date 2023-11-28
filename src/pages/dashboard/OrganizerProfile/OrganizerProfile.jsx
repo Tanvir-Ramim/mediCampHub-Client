@@ -23,9 +23,6 @@ const OrganizerProfile = () => {
     }
     console.log(user)
     const onSubmit = async (data) => {
-            // e.preventDefault()
-            // const image=e.target.pic.value 
-            console.log(data)
             const imageFile={image: data.image[0]}
             const res= await axiosNormal.post(image_hosting_api,imageFile,{
                 headers:{

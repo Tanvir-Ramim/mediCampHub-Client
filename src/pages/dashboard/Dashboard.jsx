@@ -11,8 +11,8 @@ import { FaPhoneSquareAlt } from "react-icons/fa";
 import { FaCampground } from "react-icons/fa6";
 
 const Dashboard = () => {
-  const { role, isLoading } = useRole()
-  if (isLoading) {
+  const { role, isLoading,isPending } = useRole()
+  if (isLoading || isPending) {
     return <Skeleton count={10} />
   }
   return (

@@ -13,13 +13,13 @@ const useRole = () => {
           return res
     }
         
-       const{data:userRole, isLoading }=useQuery({
+       const{data:userRole, isLoading,isPending }=useQuery({
         queryKey:[user?.email,'userRole'],
         queryFn: roleFn
        })
       
          const role= userRole?.data?.role
-    return {role,isLoading}
+    return {role,isLoading,isPending}
 };
 
 export default useRole;

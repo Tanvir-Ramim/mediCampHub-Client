@@ -35,7 +35,7 @@ const Registration = () => {
                })
                .then(()=>{
                 
-                   setUser({...user,displayName:name})
+                   setUser({...user,displayName:name , email:email})
                    const userInfo={
                        name,
                        email,

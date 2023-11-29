@@ -41,14 +41,13 @@ const ManageRegisterCamps = () => {
 
     return (
         <div>
-            <Helmet><title>MCH | Dashboard | ManageCamps</title></Helmet>
+            <Helmet><title>MCH | Dashboard | Register</title></Helmet>
             <div className="mx-auto text-center md:w-4/12 my-8 md:mt-10">
-                <h3 className="uppercase text-4xl border-y-4 py-4">Manage <span className="text-[#B354A6]">Camps</span> </h3>
+                <h3 className="uppercase text-4xl border-y-4 py-4">Manage <span className="text-[#B354A6]">Register</span> </h3>
             </div>
 
             <div className="overflow-x-auto">
                 <table className="table">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th>#</th>
@@ -59,9 +58,6 @@ const ManageRegisterCamps = () => {
                             <th>fees</th>
                             <th>Payment Status</th>
                             <th>Confirmation Status</th>
-
-
-
                         </tr>
                     </thead>
                     <tbody>

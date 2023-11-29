@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBiQB98tEW3-K0esj3x_itRV-pdYMGDEeg",
-  authDomain: "medicamphub.firebaseapp.com",
-  projectId: "medicamphub",
-  storageBucket: "medicamphub.appspot.com",
-  messagingSenderId: "20288829054",
-  appId: "1:20288829054:web:fef7162e37c97ca40b8a2f"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

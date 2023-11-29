@@ -53,7 +53,7 @@ const AddACamp = () => {
                 services: data.services,
                 participant:0,
                 userEmail:user?.email,
-                healthcareDicison:'false'
+                healthcareDicison:"false"
             }
 
             axiosNormal.post('/camps',campsInfo)

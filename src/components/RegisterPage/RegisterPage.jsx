@@ -45,7 +45,6 @@ const RegisterPage = ({id,participant,refetch,forRegister}) => {
                   refetch()
                 }
             })
-
           }
 
         

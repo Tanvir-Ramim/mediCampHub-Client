@@ -88,7 +88,7 @@ const RegisteredCamps = () => {
                     </thead>
                     <tbody>
                         {
-                            registersInfo.map((item, index) => <tr key={item._id}>
+                            registersInfo?.map((item, index) => <tr key={item._id}>
                                 <th >{index + 1}</th>
                                 <th >{item?.CampName}</th>
                                 <th >{item?.location}</th>

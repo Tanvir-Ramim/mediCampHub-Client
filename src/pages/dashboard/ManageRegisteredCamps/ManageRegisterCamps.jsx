@@ -64,7 +64,7 @@ const ManageRegisterCamps = () => {
                     </thead>
                     <tbody>
                         {
-                            allRegister.map((item, index) => <tr key={item._id}>
+                            allRegister?.map((item, index) => <tr key={item._id}>
                                 <th >{index + 1}</th>
                                 <th >{item?.CampName}</th>
                                 <th >{item?.location}</th>

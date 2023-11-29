@@ -46,7 +46,7 @@ const PaymentHistory = () => {
                     </thead>
                     <tbody>
                         {
-                            allPayment.map((item, index) => <tr key={item._id}>
+                            allPayment?.map((item, index) => <tr key={item._id}>
                                 <th >{index + 1}</th>
                                 <th >{item?.campName}</th>
                                 <th >{item?.venue}</th>

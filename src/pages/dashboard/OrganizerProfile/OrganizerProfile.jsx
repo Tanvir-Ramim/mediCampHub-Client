@@ -45,9 +45,14 @@ const OrganizerProfile = () => {
            }
     }
     return (
-        <div className=' h-full mt-6 flex items-center justify-center'>
+        <div className=' h-full mt-6  md:flex p-1 md:p-8 items-center justify-center'>
             <Helmet><title>MCH | Dashboard | Profile</title></Helmet>
-            <div className='bg-[#F9F1EE] w-[600px] shadow-lg  '>
+            
+            <div className="mx-auto order-1  text-center md:w-4/12  my-8 md:mt-10">
+                <h3 className="uppercase text-4xl border-y-4 py-4"> {role} <span className="text-[#B354A6]">Profile</span> </h3>
+            </div>
+
+            <div className='bg-[#F9F1EE] md:w-[600px] shadow-lg order-2 '>
                 <img className='h-36  overflow-hidden w-[600px] ' src={cover} alt="" />
                 <div className='flex  justify-center -mt-6'>
                     <div className="avatar">
@@ -97,6 +102,8 @@ const OrganizerProfile = () => {
                 }
                
             </div>
+
+            
 
         </div>
     );

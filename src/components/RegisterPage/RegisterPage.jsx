@@ -29,8 +29,9 @@ const RegisterPage = ({id,participant,refetch,forRegister}) => {
         const userMail=user.email
         const paymentStatus='Pay'
         const ConfirmationStatus='pending'
+        const healthcareDicison='false'
         const registerInfo={
-          name,age,gender,phone,address,campId,userMail,paymentStatus,ConfirmationStatus,CampName,scheduled,location,fees,campEmail
+          name,age,gender,phone,address,campId,userMail,paymentStatus,ConfirmationStatus,CampName,scheduled,location,fees,campEmail,healthcareDicison
         }
           const res=await axiosSecure.post('/register',registerInfo)
           if(res.data.insertedId){

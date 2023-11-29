@@ -4,16 +4,18 @@ import { useQuery } from "@tanstack/react-query";
 import ErrorPage from "../../../components/errorpage/ErrorPage";
 import Skeleton from "react-loading-skeleton";
 import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 
 const ManageRegisterCamps = () => {
     const axiosSecure = useAxiosSecure()
+    const {user}=useAuth()
     const allRegisterFn = async () => {
-        const res = await axiosSecure.get('/registerAll')
+        const res = await axiosSecure.get(`/registerAll?email=${user?.email}`)
         return res.data
     }
 
     const { data: allRegister, isError, isLoading, isPending,refetch } = useQuery({
-        queryKey: ['allRegister'],
+        queryKey: ['allRegister',user?.email],
         queryFn: allRegisterFn
     })
     if (isError) {

@@ -38,10 +38,11 @@ const Details = () => {
         return <Skeleton count={10} />
     }
 
-    const { _id, name, services, scheduled, participant, location, image, fees, audience, healthCareName, details } = campDetails || {}
+    const { _id, name, services, scheduled, participant, location, image, fees, audience, healthCareName, details,userEmail:campEmail } = campDetails || {}
     const forRegister = {
-        name, scheduled, location, fees
+        name, scheduled, location, fees,campEmail
     }
+    console.log(campDetails)
 
     return (
         <MainDiv>

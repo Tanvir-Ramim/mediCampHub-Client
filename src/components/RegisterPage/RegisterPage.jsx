@@ -13,8 +13,8 @@ const RegisterPage = ({id,participant,refetch,forRegister}) => {
           document.getElementById('my_modal_3').close();
         };
 
-
-      const{name:CampName,scheduled,location,fees}=forRegister ||{}
+         
+      const{name:CampName,scheduled,location,fees,campEmail}=forRegister ||{}
       
 
      const handleRegister=async(e)=>{
@@ -30,7 +30,7 @@ const RegisterPage = ({id,participant,refetch,forRegister}) => {
         const paymentStatus='Pay'
         const ConfirmationStatus='pending'
         const registerInfo={
-          name,age,gender,phone,address,campId,userMail,paymentStatus,ConfirmationStatus,CampName,scheduled,location,fees
+          name,age,gender,phone,address,campId,userMail,paymentStatus,ConfirmationStatus,CampName,scheduled,location,fees,campEmail
         }
           const res=await axiosSecure.post('/register',registerInfo)
           if(res.data.insertedId){

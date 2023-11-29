@@ -58,7 +58,7 @@ const ManageCamCare = () => {
                             <th>scheduled</th>
                             <th>services</th>
                             <th>fees</th>
-                            <th>Accept Camp</th>
+                            <th>Request For Join</th>
                           
                         </tr>
                     </thead>

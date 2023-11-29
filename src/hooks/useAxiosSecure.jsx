@@ -21,7 +21,6 @@ const useAxiosSecure = () => {
         },error=>{
             if(error.response?.status===401 || error.response?.status===403)
             {
-                console.log('asir ra')
                 userLogOut()
                 .then(()=>{
                      navigate('/login')

@@ -4,13 +4,9 @@ import ErrorPage from "../../../components/errorpage/ErrorPage";
 import Skeleton from "react-loading-skeleton";
 import pp from '../../../assets/logo/no-profile-picture-icon.jpg'
 
-
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from 'swiper/modules';
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import { Rating } from "@smastrom/react-rating";

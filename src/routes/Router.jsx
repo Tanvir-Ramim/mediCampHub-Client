@@ -84,24 +84,24 @@ import ManageCamCare from "../pages/dashboard/HealthCare/MangeCampCare/ManageCam
           // route for Participant
           {
              path : 'registered-camps-p',
-             element:<RegisteredCamps></RegisteredCamps>
+             element:<PrivateRoute><RegisteredCamps></RegisteredCamps></PrivateRoute>
           },
           {
              path : 'payment-history',
-             element: <PaymentHistory></PaymentHistory>
+             element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
           },
           {
              path : 'feedBack-ratings',
-             element: <Feedback></Feedback>
+             element: <PrivateRoute><Feedback></Feedback></PrivateRoute>
           },
           {
             path:'payment',
-            element: <PaymentPage></PaymentPage>
+            element: <PrivateRoute><PaymentPage></PaymentPage></PrivateRoute>
           },
           // rout for healthcare
           {
             path:'manage-camps-care',
-            element:<ManageCamCare></ManageCamCare>
+            element: <PrivateRoute><ManageCamCare></ManageCamCare></PrivateRoute>
           }
         ]
       
